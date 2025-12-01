@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Staffing & Recruiting Service</title>
+    <title>🌐 IT Solutions</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
@@ -136,10 +136,10 @@
         <div class="set1">
           <img class="logo" src="./Assets/Logo_11zon.webp" alt="" />
           <p class="footer-para">
-             © 2025 <strong>Stackly Services</strong> delivers innovative IT
-            solutions, cloud-driven architectures, intelligent system
-            integrations, and end-to-end technology support—empowering
-            organizations to and achieve digital excellence.
+            © 2025 <strong>Stackly IT Solutions</strong> delivers innovative
+            technology services, digital transformation support, intelligent
+            automation, and end-to-end IT solutions empowering businesses to
+            scale smarter and operate efficiently.
           </p>
           <a href="./error.html">
             <i class="fa-brands fa-square-linkedin"></i>
@@ -203,69 +203,70 @@
     </script>
     <script src="./sidebar.js"></script>
     <script src="./footer.js"></script>
-  <script>
-    //   Forms Page
+    <script>
+      //   Forms Page
 
-    const Email = document.getElementById("span_email");
-    const Password1 = document.getElementById("span_password");
-    const ConfirmPass = document.getElementById("span_confirm");
+      const Email = document.getElementById("span_email");
+      const Password1 = document.getElementById("span_password");
+      const ConfirmPass = document.getElementById("span_confirm");
 
-    const Form = document.getElementById("form");
-    const InputEmail = document.getElementById("inputEmail");
-    const InputPassword = document.getElementById("inputPassword");
-    const InputConfirm = document.getElementById("inputConfirm");
+      const Form = document.getElementById("form");
+      const InputEmail = document.getElementById("inputEmail");
+      const InputPassword = document.getElementById("inputPassword");
+      const InputConfirm = document.getElementById("inputConfirm");
 
-    Form.addEventListener("submit", function (event) {
-      event.preventDefault();
+      Form.addEventListener("submit", function (event) {
+        event.preventDefault();
 
-      const emailvalue = InputEmail.value.trim();
-      const password2 = InputPassword.value.trim();
-      const confirmValue = InputConfirm.value.trim();
+        const emailvalue = InputEmail.value.trim();
+        const password2 = InputPassword.value.trim();
+        const confirmValue = InputConfirm.value.trim();
 
-      // Email check
-      const validEmail = emailvalue.endsWith("@gmail.com");
+        // Email check
+        const validEmail = emailvalue.endsWith("@gmail.com");
 
-      // Password checks
-      const hasUpper = /[A-Z]/.test(password2);
-      const hasLower = /[a-z]/.test(password2);
-      const hasNumber = /[0-9]/.test(password2);
-      const hasSpecial = /[!@#$%^&*(,.?:{}|<>]/.test(password2);
-      const ValidPassword = hasLower && hasUpper && hasNumber && hasSpecial;
+        // Password checks
+        const hasUpper = /[A-Z]/.test(password2);
+        const hasLower = /[a-z]/.test(password2);
+        const hasNumber = /[0-9]/.test(password2);
+        const hasSpecial = /[!@#$%^&*(,.?:{}|<>]/.test(password2);
+        const ValidPassword = hasLower && hasUpper && hasNumber && hasSpecial;
 
-      // Email validation
-      if (!validEmail) {
-        Email.textContent = "Please Enter a Valid Email ending with @gmail.com";
-        return;
-      } else {
+        // Email validation
+        if (!validEmail) {
+          Email.textContent =
+            "Please Enter a Valid Email ending with @gmail.com";
+          return;
+        } else {
+          Email.textContent = "";
+        }
+
+        // Password validation
+        if (!ValidPassword) {
+          Password1.textContent =
+            "Password must include uppercase, lowercase, number & special character";
+          return;
+        } else {
+          Password1.textContent = "";
+        }
+
+        // Confirm Password validation
+        if (password2 !== confirmValue) {
+          ConfirmPass.textContent = "Passwords do not match";
+          return;
+        } else {
+          ConfirmPass.textContent = "";
+        }
+
+        // Clear all messages
         Email.textContent = "";
-      }
-
-      // Password validation
-      if (!ValidPassword) {
-        Password1.textContent =
-          "Password must include uppercase, lowercase, number & special character";
-        return;
-      } else {
         Password1.textContent = "";
-      }
-
-      // Confirm Password validation
-      if (password2 !== confirmValue) {
-        ConfirmPass.textContent = "Passwords do not match";
-        return;
-      } else {
         ConfirmPass.textContent = "";
-      }
 
-      // Clear all messages
-      Email.textContent = "";
-      Password1.textContent = "";
-      ConfirmPass.textContent = "";
+        Form.reset();
 
-      Form.reset();
-
-      window.location.href = "./error.html";
-    });
-  </script>
+        window.location.href = "./error.html";
+      });
+    </script>
   </body>
 </html>

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Staffing & Recruiting Service</title>
+    <title>🌐 IT Solutions</title>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
@@ -76,77 +76,75 @@
         <li><a href="./sign-in.html">Sign In</a></li>
       </ul>
     </div>
-<section class="cards">
-  <div class="card">
-    <h3>Total Active IT Projects</h3>
-    <p id="totalPositions">48</p>
-  </div>
+    <section class="cards">
+      <div class="card">
+        <h3>Total Active IT Projects</h3>
+        <p id="totalPositions">48</p>
+      </div>
 
-  <div class="card">
-    <h3>Active Support Tickets</h3>
-    <p id="activeCandidates">320</p>
-  </div>
+      <div class="card">
+        <h3>Active Support Tickets</h3>
+        <p id="activeCandidates">320</p>
+      </div>
 
-  <div class="card">
-    <h3>Successful Deployments</h3>
-    <p id="placements">1,250</p>
-  </div>
-</section>
+      <div class="card">
+        <h3>Successful Deployments</h3>
+        <p id="placements">1,250</p>
+      </div>
+    </section>
 
-<!-- Charts -->
-<div class="chartGrid">
-  <!-- Monthly Deployments -->
-  <div class="chartBox">
-    <h3>Monthly Deployments</h3>
-    <canvas id="monthlyHires"></canvas>
-  </div>
+    <!-- Charts -->
+    <div class="chartGrid">
+      <!-- Monthly Deployments -->
+      <div class="chartBox">
+        <h3>Monthly Deployments</h3>
+        <canvas id="monthlyHires"></canvas>
+      </div>
 
-  <!-- IT Support Requests -->
-  <div class="chartBox">
-    <h3>Support Requests by Category</h3>
-    <canvas id="candidateApplications"></canvas>
-  </div>
+      <!-- IT Support Requests -->
+      <div class="chartBox">
+        <h3>Support Requests by Category</h3>
+        <canvas id="candidateApplications"></canvas>
+      </div>
 
-  <!-- Active Projects Distribution -->
-  <div class="chartBox">
-    <h3>Projects by IT Service</h3>
-    <canvas id="positionsDistribution"></canvas>
-  </div>
+      <!-- Active Projects Distribution -->
+      <div class="chartBox">
+        <h3>Projects by IT Service</h3>
+        <canvas id="positionsDistribution"></canvas>
+      </div>
 
-  <!-- Average Resolution Time -->
-  <div class="chartBox">
-    <h3>Average Resolution Time (Hours)</h3>
-    <canvas id="timeToFill"></canvas>
-  </div>
-</div>
+      <!-- Average Resolution Time -->
+      <div class="chartBox">
+        <h3>Average Resolution Time (Hours)</h3>
+        <canvas id="timeToFill"></canvas>
+      </div>
+    </div>
 
-<div class="chartGrid">
-  <!-- System Uptime -->
-  <div class="chartBox">
-    <h3>System Uptime (%)</h3>
-    <canvas id="systemUptime"></canvas>
-  </div>
+    <div class="chartGrid">
+      <!-- System Uptime -->
+      <div class="chartBox">
+        <h3>System Uptime (%)</h3>
+        <canvas id="systemUptime"></canvas>
+      </div>
 
-  <!-- Incident Severity Levels -->
-  <div class="chartBox">
-    <h3>Incident Severity Breakdown</h3>
-    <canvas id="incidentSeverity"></canvas>
-  </div>
+      <!-- Incident Severity Levels -->
+      <div class="chartBox">
+        <h3>Incident Severity Breakdown</h3>
+        <canvas id="incidentSeverity"></canvas>
+      </div>
 
-  <!-- Cloud Resource Usage -->
-  <div class="chartBox">
-    <h3>Cloud Resource Usage</h3>
-    <canvas id="cloudUsage"></canvas>
-  </div>
+      <!-- Cloud Resource Usage -->
+      <div class="chartBox">
+        <h3>Cloud Resource Usage</h3>
+        <canvas id="cloudUsage"></canvas>
+      </div>
 
-  <!-- Network Traffic Trends -->
-  <div class="chartBox">
-    <h3>Network Traffic Trends</h3>
-    <canvas id="networkTraffic"></canvas>
-  </div>
-</div>
-
-
+      <!-- Network Traffic Trends -->
+      <div class="chartBox">
+        <h3>Network Traffic Trends</h3>
+        <canvas id="networkTraffic"></canvas>
+      </div>
+    </div>
 
     <footer data-aos="fade-up">
       <div id="vanta-fr"></div>
@@ -154,10 +152,10 @@
         <div class="set1">
           <img class="logo" src="./Assets/Logo_11zon.webp" alt="" />
           <p class="footer-para">
-            © 2025 <strong>Stackly Services</strong> delivers innovative IT
-            solutions, cloud-driven architectures, intelligent system
-            integrations, and end-to-end technology support—empowering
-            organizations to and achieve digital excellence.
+            © 2025 <strong>Stackly IT Solutions</strong> delivers innovative
+            technology services, digital transformation support, intelligent
+            automation, and end-to-end IT solutions empowering businesses to
+            scale smarter and operate efficiently.
           </p>
           <a href="./error.html">
             <i class="fa-brands fa-square-linkedin"></i>
@@ -221,162 +219,195 @@
     </script>
     <!-- Keep your HTML exactly as-is -->
 
-<script>
-  // -------------------------------
-  // 1. Monthly Deployments (Line)
-  // -------------------------------
-  const monthlyHires = new Chart(document.getElementById("monthlyHires"), {
-    type: "line",
-    data: {
-      labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-      datasets: [{
-        label: "Deployments",
-        data: [10, 12, 18, 22, 25, 28, 30, 32, 26, 20, 17, 14],
-        borderWidth: 2,
-        tension: 0.4
-      }]
-    },
-    options: {
-      responsive: true,
-      plugins: { legend: { display: false } }
-    }
-  });
+    <script>
+      // -------------------------------
+      // 1. Monthly Deployments (Line)
+      // -------------------------------
+      const monthlyHires = new Chart(document.getElementById("monthlyHires"), {
+        type: "line",
+        data: {
+          labels: [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec",
+          ],
+          datasets: [
+            {
+              label: "Deployments",
+              data: [10, 12, 18, 22, 25, 28, 30, 32, 26, 20, 17, 14],
+              borderWidth: 2,
+              tension: 0.4,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          plugins: { legend: { display: false } },
+        },
+      });
 
-  // ------------------------------------------------
-  // 2. Support Requests by Category (Bar)
-  // ------------------------------------------------
-  const candidateApplications = new Chart(document.getElementById("candidateApplications"), {
-    type: "bar",
-    data: {
-      labels: ["Network", "Cloud", "Security", "Software", "DevOps"],
-      datasets: [{
-        label: "Requests",
-        data: [120, 180, 150, 200, 160],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      responsive: true,
-      plugins: { legend: { display: false } }
-    }
-  });
+      // ------------------------------------------------
+      // 2. Support Requests by Category (Bar)
+      // ------------------------------------------------
+      const candidateApplications = new Chart(
+        document.getElementById("candidateApplications"),
+        {
+          type: "bar",
+          data: {
+            labels: ["Network", "Cloud", "Security", "Software", "DevOps"],
+            datasets: [
+              {
+                label: "Requests",
+                data: [120, 180, 150, 200, 160],
+                borderWidth: 1,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            plugins: { legend: { display: false } },
+          },
+        }
+      );
 
-  // ---------------------------------------------
-  // 3. Projects by IT Service (Doughnut)
-  // ---------------------------------------------
-  const positionsDistribution = new Chart(document.getElementById("positionsDistribution"), {
-    type: "doughnut",
-    data: {
-      labels: ["Cloud Services", "Cybersecurity", "Software Development", "Tech Support", "Automation"],
-      datasets: [{
-        label: "Projects",
-        data: [20, 12, 25, 18, 10]
-      }]
-    },
-    options: {
-      responsive: true,
-      plugins: { legend: { position: "bottom" } }
-    }
-  });
+      // ---------------------------------------------
+      // 3. Projects by IT Service (Doughnut)
+      // ---------------------------------------------
+      const positionsDistribution = new Chart(
+        document.getElementById("positionsDistribution"),
+        {
+          type: "doughnut",
+          data: {
+            labels: [
+              "Cloud Services",
+              "Cybersecurity",
+              "Software Development",
+              "Tech Support",
+              "Automation",
+            ],
+            datasets: [
+              {
+                label: "Projects",
+                data: [20, 12, 25, 18, 10],
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            plugins: { legend: { position: "bottom" } },
+          },
+        }
+      );
 
-  // --------------------------------------------------
-  // 4. Average Resolution Time (Hours)
-  // --------------------------------------------------
-  const timeToFill = new Chart(document.getElementById("timeToFill"), {
-    type: "bar",
-    data: {
-      labels: ["Network", "Cloud", "Security", "Software", "DevOps"],
-      datasets: [{
-        label: "Hours",
-        data: [8, 12, 10, 6, 5],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      responsive: true,
-      plugins: { legend: { display: false } }
-    }
-  });
+      // --------------------------------------------------
+      // 4. Average Resolution Time (Hours)
+      // --------------------------------------------------
+      const timeToFill = new Chart(document.getElementById("timeToFill"), {
+        type: "bar",
+        data: {
+          labels: ["Network", "Cloud", "Security", "Software", "DevOps"],
+          datasets: [
+            {
+              label: "Hours",
+              data: [8, 12, 10, 6, 5],
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          plugins: { legend: { display: false } },
+        },
+      });
 
+      // 1️⃣ System Uptime (%) Line Chart
+      new Chart(document.getElementById("systemUptime"), {
+        type: "line",
+        data: {
+          labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
+          datasets: [
+            {
+              label: "Uptime %",
+              data: [99.4, 99.7, 99.2, 99.8, 99.9, 99.5],
+              borderColor: "#4CAF50",
+              borderWidth: 2,
+              tension: 0.3,
+              fill: false,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          scales: { y: { beginAtZero: false, max: 100 } },
+        },
+      });
 
+      // 2️⃣ Incident Severity Breakdown (Pie Chart)
+      new Chart(document.getElementById("incidentSeverity"), {
+        type: "pie",
+        data: {
+          labels: ["Critical", "High", "Medium", "Low"],
+          datasets: [
+            {
+              data: [10, 20, 35, 45],
+              backgroundColor: ["#e63946", "#f4a261", "#2a9d8f", "#457b9d"],
+            },
+          ],
+        },
+        options: { responsive: true },
+      });
 
-  // 1️⃣ System Uptime (%) Line Chart
-new Chart(document.getElementById("systemUptime"), {
-  type: "line",
-  data: {
-    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
-    datasets: [{
-      label: "Uptime %",
-      data: [99.4, 99.7, 99.2, 99.8, 99.9, 99.5],
-      borderColor: "#4CAF50",
-      borderWidth: 2,
-      tension: 0.3,
-      fill: false
-    }]
-  },
-  options: {
-    responsive: true,
-    scales: { y: { beginAtZero: false, max: 100 } }
-  }
-});
+      // 3️⃣ Cloud Resource Usage (Bar Chart)
+      new Chart(document.getElementById("cloudUsage"), {
+        type: "bar",
+        data: {
+          labels: ["Compute", "Storage", "Database", "Networking"],
+          datasets: [
+            {
+              label: "Usage (%)",
+              data: [75, 60, 85, 55],
+              backgroundColor: "#3a86ff",
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          scales: { y: { beginAtZero: true } },
+        },
+      });
 
-
-// 2️⃣ Incident Severity Breakdown (Pie Chart)
-new Chart(document.getElementById("incidentSeverity"), {
-  type: "pie",
-  data: {
-    labels: ["Critical", "High", "Medium", "Low"],
-    datasets: [{
-      data: [10, 20, 35, 45],
-      backgroundColor: ["#e63946", "#f4a261", "#2a9d8f", "#457b9d"]
-    }]
-  },
-  options: { responsive: true }
-});
-
-
-// 3️⃣ Cloud Resource Usage (Bar Chart)
-new Chart(document.getElementById("cloudUsage"), {
-  type: "bar",
-  data: {
-    labels: ["Compute", "Storage", "Database", "Networking"],
-    datasets: [{
-      label: "Usage (%)",
-      data: [75, 60, 85, 55],
-      backgroundColor: "#3a86ff"
-    }]
-  },
-  options: {
-    responsive: true,
-    scales: { y: { beginAtZero: true } }
-  }
-});
-
-
-// 4️⃣ Network Traffic Trends (Line Chart)
-new Chart(document.getElementById("networkTraffic"), {
-  type: "line",
-  data: {
-    labels: ["00:00", "04:00", "08:00", "12:00", "16:00", "20:00"],
-    datasets: [{
-      label: "Traffic (GB)",
-      data: [12, 18, 25, 30, 22, 15],
-      borderColor: "#8e44ad",
-      borderWidth: 2,
-      tension: 0.3,
-      fill: true,
-      backgroundColor: "rgba(142, 68, 173, 0.2)"
-    }]
-  },
-  options: {
-    responsive: true,
-    scales: { y: { beginAtZero: true } }
-  }
-});
-
-</script>
-
-
+      // 4️⃣ Network Traffic Trends (Line Chart)
+      new Chart(document.getElementById("networkTraffic"), {
+        type: "line",
+        data: {
+          labels: ["00:00", "04:00", "08:00", "12:00", "16:00", "20:00"],
+          datasets: [
+            {
+              label: "Traffic (GB)",
+              data: [12, 18, 25, 30, 22, 15],
+              borderColor: "#8e44ad",
+              borderWidth: 2,
+              tension: 0.3,
+              fill: true,
+              backgroundColor: "rgba(142, 68, 173, 0.2)",
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          scales: { y: { beginAtZero: true } },
+        },
+      });
+    </script>
 
     <script src="./sidebar.js"></script>
     <script src="./footer.js"></script>
