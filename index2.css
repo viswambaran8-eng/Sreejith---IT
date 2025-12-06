@@ -155,7 +155,7 @@ header {
 /* ---------------------------------------------------------------------------- */
 /* Sidebar */
 .sidebar {
-  height: max-content;
+  height: 100%;
   width: 0;
   position: fixed;
   z-index: 1000;
@@ -389,7 +389,7 @@ header {
 
 .headings h1 {
   font-family: "Roboto Slab", serif;
-  font-size: xx-large;
+  /* font-size: x-large; */
   /* Dark gradient for visibility on white background */
   background: linear-gradient(to right, #0a7a55, #075544);
   -webkit-background-clip: text;
@@ -405,29 +405,6 @@ header {
   font-weight: 600;
 }
 
-@media screen and (max-width: 700px) {
-  .headings h1 {
-    font-size: x-large;
-  }
-  .headings h3 {
-    font-size: 24px;
-  }
-  .headings p {
-    font-size: medium;
-  }
-}
-
-@media screen and (max-width: 400px) {
-  .headings h1 {
-    font-size: 22px;
-  }
-  .headings h3 {
-    font-size: 20px;
-  }
-  .headings p {
-    font-size: small;
-  }
-}
 /* -------------------------------------- */
 
 .project-cards {
@@ -517,6 +494,8 @@ header {
     font-size: 25px;
   }
 }
+
+
 
 /* ------------------ FOOTER PAGE ------------------------ */
 
@@ -824,3 +803,50 @@ footer {
     padding: 30px 20px;
   }
 }
+
+
+@media screen and (max-width: 700px) {
+  .headings h1 {
+    font-size: large;
+  }
+  .headings h3 {
+    font-size: 24px;
+  }
+  .headings p {
+    font-size: medium;
+  }
+}
+@media screen and (max-width: 700px) {
+  .pricing-section .headings h1 {
+    font-size: large;
+  }
+  .headings h3 {
+    font-size: 24px;
+  }
+  .headings p {
+    font-size: medium;
+  }
+  .pricing-card h3 {
+    font-size: larger;
+  }
+  
+}
+
+@media screen and (max-width: 400px) {
+  .pricing-section .headings h1 {
+    font-size: 22px;
+  }
+  .headings h3 {
+    font-size: 20px;
+  }
+  .headings p {
+    font-size: small;
+  }
+  .pricing-card .price {
+    font-size: large;
+  }
+  .pricing-card button {
+    font-size: small;
+  }
+}
+
