@@ -892,7 +892,7 @@ footer {
   width: 100%;
   position: relative;
   overflow: hidden;
-  transition: all 0.5s ease;
+  /* transition: all 0.5s ease; */
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
 
   /* Entrance Animation */
@@ -935,7 +935,7 @@ footer {
 
 .pricing-card:hover::after {
   opacity: 1;
-  animation: shimmer 2s ease-in-out infinite;
+  animation: shimmer 2.5s ease-in-out infinite;
 }
 
 /* Sparkle overlay specifically for popular card */
@@ -948,7 +948,7 @@ footer {
   background-size: 30px 30px;
   opacity: 0;
   z-index: 2;
-  transition: opacity 0.3s ease;
+  /* transition: opacity 0.3s ease; */
 }
 
 .pricing-card.popular:hover::before {
@@ -1056,6 +1056,11 @@ footer {
   transform: translateY(-3px);
   box-shadow: 0 10px 24px rgba(10, 122, 85, 0.55);
 } */
+
+
+.btn1:hover {
+  animation: none;
+}
 
 /* === CLICK FEEDBACK === */
 .btn1:active {
