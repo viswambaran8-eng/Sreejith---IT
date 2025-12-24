@@ -612,7 +612,7 @@ header {
 .project-card i {
   font-size: 40px;
   margin-bottom: 15px;
-  background: linear-gradient(90deg, #00ffb3, #14ff78, #0afff5, #00e0ff, #00ffb3);
+  background: linear-gradient(90deg,  #ff00a3, #ff6a00, #fffa00, #ff00a3);
   background-size: 300% 300%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -713,7 +713,7 @@ header {
 
 
 /* === MEDIA QUERIES === */
-@media screen and (max-width: 700px) {
+@media screen and (max-width: 900px) {
   .project-cards {
     grid-template-columns: repeat(1, 1fr);
   }
@@ -727,10 +727,6 @@ header {
     font-size: 25px;
   }
 }
-
-
-
-
 
 /* ------------------ FOOTER PAGE ------------------------ */
 
@@ -1039,25 +1035,39 @@ footer {
   font-size: 16px;
 }
 
-/* === BUTTON BASE === */
+/* === PRIMARY BUTTON STYLE === */
 .btn1 {
   background: linear-gradient(135deg, #0a7a55, #075544);
-  color: #fff;
+  color: #ffffff;
   border: none;
-  padding: 14px 32px;
-  border-radius: 50px;
-  cursor: pointer;
+  padding: 14px 36px;
+  border-radius: 999px;
   font-size: 16px;
   font-weight: 600;
-  transition: none; /* instant hover effect */
+  cursor: pointer;
+  letter-spacing: 0.4px;
+  box-shadow: 0 6px 16px rgba(10, 122, 85, 0.35);
+  transition: none; /* zero delay */
 }
 
-/* === BUTTON HOVER === */
-.btn1:hover {
-  background: linear-gradient(135deg, #075544, #0a7a55); /* reverse gradient */
-  transform: translateY(-4px) scale(1.05); /* subtle lift and scale */
-  box-shadow: 0 8px 20px rgba(10, 122, 85, 0.4); /* soft glow */
+/* === INSTANT HOVER EFFECT === */
+/* .btn1:hover {
+  background: linear-gradient(135deg, #075544, #0a7a55);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 24px rgba(10, 122, 85, 0.55);
+} */
+
+/* === CLICK FEEDBACK === */
+.btn1:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 12px rgba(10, 122, 85, 0.35);
 }
+
+/* === REMOVE LINK STYLING === */
+a {
+  text-decoration: none;
+}
+
 
 
 /* === KEYFRAMES === */
