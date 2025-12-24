@@ -875,7 +875,8 @@ footer {
   .service-card h3 {
     font-size: medium;
   }
-}/* === PRICING CARDS WRAPPER === */
+}
+/* === PRICING CARDS WRAPPER === */
 .pricing-cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
