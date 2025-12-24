@@ -710,7 +710,7 @@ main .container .image-block1 video {
 .read-more {
   position: relative;
   overflow: hidden;
-
+  margin-top: 10px;
   padding: 12px 28px;
   font-size: 16px;
   font-weight: 600;
