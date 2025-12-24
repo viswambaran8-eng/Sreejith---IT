@@ -246,7 +246,6 @@ header {
   display: none;
 }
 /* ----------------------------------- */
-
 /* MAIN WRAPPER */
 .service-cards {
   display: grid;
@@ -266,102 +265,224 @@ header {
     grid-template-columns: repeat(1, 1fr);
   }
 }
+/* === SERVICE CARDS GRID === */
+.service-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 50px;
+}
 
-/* CARD STYLING */
+@media screen and (max-width: 1100px) {
+  .service-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .service-cards {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+/* === SERVICE CARDS GRID === */
+.service-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-top: 50px;
+}
+
+@media screen and (max-width: 1100px) {
+  .service-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .service-cards {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+/* === SERVICE CARD BASE === */
 .service-card {
-  background: white;
-  padding: 30px;
-  border-radius: 15px;
-  text-align: center;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-  transition: all 0.4s ease-in-out;
-  cursor: pointer;
   position: relative;
+  border-radius: 20px; /* Smooth border radius */
+  padding: 30px;
+  text-align: center;
   overflow: hidden;
+  cursor: pointer;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  background: white;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  border: 4px solid rgba(10,122,85,0.2); /* subtle border */
+  transition: all 0.4s ease-in-out;
+
+  /* Entrance Animation */
+  opacity: 0;
+  transform: translateY(20px);
+  animation: cardFadeUp 0.8s ease forwards;
+  will-change: opacity, transform;
 }
 
-/* ICON */
-.service-card i {
-  font-size: 40px;
-  margin-bottom: 15px;
-  /* Gradient Icon */
-  background: linear-gradient(to right, #0a7f61, #075544);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* HEADINGS - Gradient WebKit */
-.service-card h3 {
-  font-size: 22px;
-  margin-bottom: 10px;
-  background: linear-gradient(to right, #0a7f61, #075544);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* PARAGRAPH - Visible Gray + Light WebKit gradient blend */
-.service-card p {
-  font-size: 16px;
-  line-height: 1.5;
-  color: #444;
-
-  /* Soft gradient overlay for visibility */
-  background: linear-gradient(to right, #4f4f4f, #222);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-/* HOVER EFFECTS */
+/* === HOVER EFFECTS === */
 .service-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 25px rgba(11, 166, 109, 0.25);
-  border-color: #0a7f61;
+  transform: translateY(-12px) scale(1.03);
+  box-shadow:
+    0 20px 50px rgba(10,122,85,0.35),
+    0 0 30px rgba(20,195,142,0.25),
+    0 0 20px rgba(255,255,255,0.2);
+  border: 4px solid #0a7f61; /* stronger border on hover */
 }
 
-/* GRADIENT HOVER GLOW EFFECT */
-.service-card::after {
+/* === SPARKLE OVERLAY === */
+.service-card::before {
   content: "";
   position: absolute;
   inset: 0;
+  pointer-events: none;
+  background: radial-gradient(2px 2px rgba(255,255,255,0.8), transparent) repeat;
+  background-size: 20px 20px;
   opacity: 0;
-  background: linear-gradient(to right, #0a7f61, #075544);
-  z-index: -1;
-  transition: 0.4s ease;
+  transition: opacity 0.5s ease;
+  z-index: 1;
 }
 
-.service-card:hover::after {
-  opacity: 0.2;
+.service-card:hover::before {
+  opacity: 1;
+  animation: sparkle 1.5s linear infinite;
 }
 
-/* ANIMATION */
-.service-card {
+/* === ICON === */
+.service-card i {
+  font-size: 45px;
+  margin-bottom: 15px;
+  background: linear-gradient(90deg, #00ffb3, #14ff78, #0afff5, #00e0ff, #00ffb3);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  overflow: hidden;
+  animation: iconGradient 2.5s linear infinite;
+}
+
+.service-card i::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, rgba(255,255,255,0.6), rgba(255,255,255,0.9), rgba(255,255,255,0.6));
+  transform: skewX(-25deg);
+}
+
+.service-card:hover i::after {
+  animation: shimmer 1s ease-in-out forwards;
+}
+
+/* Icon Gradient Animation */
+@keyframes iconGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* === HEADING === */
+.service-card h3 {
+  font-size: 22px;
+  margin-bottom: 12px;
+  background: linear-gradient(90deg, #ff00a3, #ff6a00, #fffa00, #00ffd5, #ff00a3);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+  overflow: hidden;
+  animation: headingGradient 3s linear infinite;
+  font-family: "Roboto Slab", serif;
+}
+
+.service-card h3::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, rgba(255,255,255,0.6), rgba(255,255,255,0.9), rgba(255,255,255,0.6));
+  transform: skewX(-25deg);
+}
+
+.service-card:hover h3::after {
+  animation: shimmer 1s ease-in-out forwards;
+}
+
+/* Heading Gradient Animation */
+@keyframes headingGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* === PARAGRAPH === */
+.service-card p {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #222;
+  opacity: 0;
+  transform: translateY(10px);
   animation: cardFadeUp 0.8s ease forwards;
-  opacity: 0;
+  animation-delay: 0.2s;
+  font-family: "Josefin Slab", serif;
 }
 
-@keyframes cardFadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
+/* === IMAGE === */
 .service-card img {
-  width: 80px;
+  width: 102px;
   height: 80px;
   object-fit: cover;
   margin-bottom: 15px;
-  border-radius: 10px;
+  border-radius: 12px;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: cardFadeUp 0.8s ease forwards;
+  animation-delay: 0.1s;
 }
+
+/* === KEYFRAMES === */
+@keyframes cardFadeUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer {
+  0% { left: -150%; }
+  100% { left: 125%; }
+}
+
+@keyframes sparkle {
+  0% { background-position: 0 0; }
+  100% { background-position: 100px 100px; }
+}
+
+/* === MEDIA QUERIES === */
+@media screen and (max-width: 700px) {
+  .service-cards {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .service-card i {
+    font-size: 35px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .service-card i {
+    font-size: 28px;
+  }
+}
+
 
 /* ----------------------------------- */
 
@@ -407,81 +528,196 @@ header {
 
 /* -------------------------------------- */
 
+/* === PROJECT CARDS CONTAINER === */
 .project-cards {
   width: 100%;
   margin-top: 40px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 25px;
+  position: relative;
+  z-index: 0;
+  padding: 20px;
 }
 
+/* === PROJECT CARD BASE STYLE === */
 .project-card {
   background: #ffffff;
   border-radius: 14px;
-  padding: 20px;
+  padding: 10px;
   text-align: center;
   box-shadow: 0 5px 18px rgba(0, 0, 0, 0.1);
-  transition: 0.3s ease;
+  transition: 0.4s ease;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+
+  /* Entrance animation */
+  opacity: 0;
+  transform: translateY(20px);
+  animation: cardFadeUp 0.8s ease forwards;
+  will-change: opacity, transform;
 }
 
+/* === GRADIENT BORDER USING PSEUDO-ELEMENT === */
+.project-card::after {
+  content: '';
+  position: absolute;
+  top: -3px; 
+  left: -3px; 
+  right: -3px; 
+  bottom: -3px;
+  border-radius: 17px; /* slightly larger than card radius */
+  background: linear-gradient(270deg, #0a7f61, #14c38e, #4cc9f0, #075544, #0a7f61);
+  z-index: -1;
+  animation: borderGradient 3s linear infinite;
+}
+
+/* === GRADIENT BORDER ANIMATION === */
+@keyframes borderGradient {
+  0% { background: linear-gradient(270deg, #0a7f61, #14c38e, #4cc9f0, #075544, #0a7f61); }
+  50% { background: linear-gradient(450deg, #0a7f61, #14c38e, #4cc9f0, #075544, #0a7f61); }
+  100% { background: linear-gradient(270deg, #0a7f61, #14c38e, #4cc9f0, #075544, #0a7f61); }
+}
+
+/* === CARD HOVER EFFECT === */
 .project-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 7px 22px rgba(0, 0, 0, 0.15);
+  transform: translateY(-12px) scale(1.03);
+  box-shadow:
+    0 20px 50px rgba(0,140,255,0.35),
+    0 0 30px rgba(0,140,255,0.25),
+    0 0 20px rgba(255,255,255,0.2);
 }
 
+
+/* === CARD IMAGE === */
 .project-card img {
   width: 100%;
   height: 45vh;
   object-fit: cover;
   border-radius: 12px;
   margin-bottom: 15px;
-}
-@media screen and (max-width: 500px) {
-  .project-card img {
-    height: 30vh;
-  }
+  filter: brightness(50%) saturate(75%);
+  transition: filter 0.5s ease;
 }
 
-.project-card {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.project-card:hover img {
+  filter: brightness(130%) saturate(140%);
 }
 
+/* === ICON === */
 .project-card i {
   font-size: 40px;
   margin-bottom: 15px;
-  /* Gradient Icon */
-  background: linear-gradient(to right, #0a7f61, #075544);
+  background: linear-gradient(90deg, #00ffb3, #14ff78, #0afff5, #00e0ff, #00ffb3);
+  background-size: 300% 300%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  position: relative;
+  overflow: hidden;
+  animation: iconGradient 2.5s linear infinite;
+  font-weight: 700;
 }
 
+.project-card i::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, rgba(255,255,255,0.6), rgba(255,255,255,0.9), rgba(255,255,255,0.6));
+  transform: skewX(-25deg);
+}
+
+.project-card:hover i::after {
+  animation: shimmer 1s ease-in-out forwards;
+}
+
+/* Icon Gradient Animation */
+@keyframes iconGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* === HEADING === */
 .project-card h3 {
-  font-size: 20px;
-  font-weight: bold;
-  background: linear-gradient(to right, #0a7a55, #075544);
+  font-size: 22px;
+  font-weight: 800;
+  background: linear-gradient(90deg, #ff00a3, #ff6a00, #fffa00, #ff00a3);
+  background-size: 300% 300%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 12px;
+  animation: headingGradient 3s linear infinite;
+    font-family: "Roboto Slab", serif; /* added font family */
 }
 
+.project-card h3::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, rgba(255,255,255,0.6), rgba(255,255,255,0.9), rgba(255,255,255,0.6));
+  transform: skewX(-25deg);
+}
+
+.project-card:hover h3::after {
+  animation: shimmer 1s ease-in-out forwards;
+}
+
+/* Heading Gradient Animation */
+@keyframes headingGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* === PARAGRAPH === */
 .project-card p {
   margin-top: 10px;
   font-size: 15px;
   line-height: 1.5;
-  color: #555;
+  color: #111; /* dark for contrast */
+  opacity: 0;
+  transform: translateY(10px);
+  animation: cardFadeUp 0.8s ease forwards;
+  animation-delay: 0.2s;
+  font-weight: 600;
+    font-family: "Josefin Slab", serif; /* added font family */
 }
 
+/* === KEYFRAMES === */
+@keyframes cardFadeUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer {
+  0% { left: -150%; }
+  100% { left: 125%; }
+}
+
+@keyframes sparkle {
+  0% { background-position: 0 0; }
+  100% { background-position: 100px 100px; }
+}
+
+
+/* === MEDIA QUERIES === */
 @media screen and (max-width: 700px) {
   .project-cards {
     grid-template-columns: repeat(1, 1fr);
   }
   .project-cards i {
-    font-size: 30px;
-  }
-  .service-card i {
     font-size: 30px;
   }
 }
@@ -490,10 +726,9 @@ header {
   .project-card i {
     font-size: 25px;
   }
-  .service-card i {
-    font-size: 25px;
-  }
 }
+
+
 
 
 
@@ -644,37 +879,7 @@ footer {
   .service-card h3 {
     font-size: medium;
   }
-}
-
-/* Container */
-.pricing-section {
-  padding: 80px 20px;
-  background: #f9f9f9;
-  text-align: center;
-  font-family: "Roboto", sans-serif;
-}
-
-.pricing-section .headings h3 {
-  color: #0a7a55;
-  font-weight: 500;
-  font-size: 20px;
-  margin-bottom: 10px;
-}
-
-.pricing-section .headings h1 {
-  font-size: 36px;
-  color: #075544;
-  margin-bottom: 15px;
-}
-
-.pricing-section .headings p {
-  color: #555;
-  font-size: 16px;
-  max-width: 700px;
-  margin: 0 auto 50px;
-}
-
-/* Cards Layout */
+}/* === PRICING CARDS WRAPPER === */
 .pricing-cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -682,93 +887,205 @@ footer {
   justify-items: center;
 }
 
-/* Individual Card */
+/* === INDIVIDUAL CARD === */
 .pricing-card {
   background: #fff;
   border: 2px solid #0a7a55;
-  border-radius: 15px;
+  border-radius: 20px; /* smoother border radius */
   padding: 40px 30px;
   width: 100%;
-  transition: all 0.4s ease;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
   position: relative;
+  overflow: hidden;
+  transition: all 0.5s ease;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+
+  /* Entrance Animation */
+  opacity: 0;
+  transform: translateY(20px);
+  animation: cardFadeUp 0.8s ease forwards;
+  will-change: transform, opacity;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
 
+/* === HOVER EFFECTS === */
+.pricing-card:hover {
+  transform: translateY(-15px) scale(1.03);
+  box-shadow:
+    0 25px 60px rgba(0, 122, 85, 0.25),
+    0 0 40px rgba(76, 201, 240, 0.15),
+    0 0 30px rgba(255, 255, 255, 0.1);
+  border-color: #075544;
+}
+
+/* Gradient shimmer overlay for all cards */
+.pricing-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  background: linear-gradient(
+    120deg,
+    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.25),
+    rgba(255, 255, 255, 0.1)
+  );
+  transform: skewX(-20deg);
+  z-index: 1;
+  transition: opacity 0.4s ease;
+}
+
+.pricing-card:hover::after {
+  opacity: 1;
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+/* Sparkle overlay specifically for popular card */
+.pricing-card.popular::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(2px 2px rgba(255, 255, 255, 0.6), transparent) repeat;
+  background-size: 30px 30px;
+  opacity: 0;
+  z-index: 2;
+  transition: opacity 0.3s ease;
+}
+
+.pricing-card.popular:hover::before {
+  opacity: 1;
+  animation: sparkle 2s linear infinite;
+}
+
+/* === HEADINGS AND PRICE === */
 .pricing-card h3 {
-  font-size: 24px;
+  font-size: 26px;
   color: #075544;
   margin-bottom: 15px;
-  font-weight: 600;
+  font-weight: 700;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(90deg, #0afff5, #00ffb3, #14ff78);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: headerGradient 4s ease-in-out infinite;
+}
+
+.pricing-card h3::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, rgba(255,255,255,0.3), rgba(255,255,255,0.6), rgba(255,255,255,0.3));
+  transform: skewX(-25deg);
+}
+
+.pricing-card:hover h3::after {
+  animation: shimmer 1.2s ease-in-out forwards;
 }
 
 .pricing-card .price {
-  font-size: 28px;
+  font-size: 30px;
   color: #0a7a55;
   margin-bottom: 20px;
   font-weight: 700;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(90deg, #0afff5, #14ff78, #00ffb3);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: priceGradient 3s ease-in-out infinite;
 }
 
-.pricing-card ul {
-  list-style: none;
-  padding: 0;
-  margin-bottom: 25px;
+.pricing-card .price::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.25), rgba(255,255,255,0.5), rgba(255,255,255,0.25));
+  transform: skewX(-25deg);
 }
 
-/* Add checkmark before each feature, closer to text */
+.pricing-card:hover .price::after {
+  animation: shimmer 1s ease-in-out forwards;
+}
+
+/* === FEATURES LIST === */
 .pricing-card ul li {
   margin: 12px 0;
   font-size: 16px;
   color: #555;
   position: relative;
-  padding-left: 20px; /* reduced from 25px */
+  padding-left: 20px;
+  list-style: none;
+  transition: all 0.3s ease;
 }
 
 .pricing-card ul li::before {
   content: "✔";
   position: absolute;
-  left: 0; /* closer to the text */
+  left: 0;
   color: #0a7a55;
   font-weight: bold;
-  font-size: 16px; /* match text size */
+  font-size: 16px;
 }
 
-/* Button Styling */
-.pricing-card button {
+/* === BUTTON BASE === */
+.btn1 {
   background: linear-gradient(135deg, #0a7a55, #075544);
   color: #fff;
   border: none;
-  padding: 12px 30px;
+  padding: 14px 32px;
   border-radius: 50px;
   cursor: pointer;
   font-size: 16px;
   font-weight: 600;
-  transition: all 0.3s ease;
+  transition: none; /* instant hover effect */
 }
 
-.pricing-card button:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(10, 122, 85, 0.5);
+/* === BUTTON HOVER === */
+.btn1:hover {
+  background: linear-gradient(135deg, #075544, #0a7a55); /* reverse gradient */
+  transform: translateY(-4px) scale(1.05); /* subtle lift and scale */
+  box-shadow: 0 8px 20px rgba(10, 122, 85, 0.4); /* soft glow */
 }
 
-/* Hover effect for card */
-.pricing-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-  border-color: #075544;
+
+/* === KEYFRAMES === */
+@keyframes cardFadeUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 
-/* Highlighted Popular Plan */
-.pricing-card.popular {
-  border: 3px solid #075544;
-  background: linear-gradient(to top right, #e6f5f0, #f0fff9);
+@keyframes shimmer {
+  0% { left: -150%; }
+  100% { left: 125%; }
 }
 
-.pricing-card.popular h3 {
-  color: #075544;
+@keyframes sparkle {
+  0% { background-position: 0 0; }
+  100% { background-position: 100px 100px; }
 }
 
-.pricing-card.popular .price {
-  color: #0a7a55;
+@keyframes headerGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes priceGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 @media screen and (max-width: 950px) {
@@ -845,8 +1162,82 @@ footer {
   .pricing-card .price {
     font-size: large;
   }
-  .pricing-card button {
+  .btn1 {
     font-size: small;
   }
 }
 
+
+/* Loader */
+
+.the-main {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.6s ease;
+}
+
+.body1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: "Roboto-slab",serif;
+  background: black;
+  z-index: 1000;
+  width: 100vw;
+  position: fixed;
+  opacity: 1;
+  transition: opacity 0.6s ease;
+}
+
+.loader {
+  position: relative;
+}
+
+.loader .circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 250px;
+  /* border: 2px solid white; */
+}
+
+.loader span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  font-size: 28px;
+  font-weight: 700;
+  color: #0a7a55;
+  text-shadow: 0 0 8px #0a7a55;
+  letter-spacing: 2.5px;
+}
+
+.loader .point {
+  width: 3px;
+  height: 20px;
+  border-radius: 3px;
+  background: #0007;
+  position: absolute;
+  transform: rotate(calc(var(--i) * var(--rot))) translateY(-120px);
+  animation: glow 0.8s linear infinite;
+  animation-delay: calc(var(--i) * 0.01s);
+}
+
+
+@keyframes glow {
+  0%,100%{
+    background: #0007;
+    box-shadow: none;
+  }
+  50% {
+    background: #0a7a55;
+    box-shadow: 0 0 10px #0a7a55;
+  }
+}
+
+.hidden {
+  display: none;
+}

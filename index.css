@@ -249,25 +249,63 @@ header {
 /* ------------------------------------------------ */
 
 main {
-  width: 100vw;
-  background: #0a7a55;
-  background: radial-gradient(circle, #0a7a55 0%, #075544 100%);
+  width: 100%;
   height: max-content;
   padding: 30px;
-}
 
-main {
-  width: 100%;
   display: flex;
   flex-direction: row-reverse;
   overflow-x: hidden;
+
+  background: radial-gradient(circle, #0a7a55 0%, #075544 100%);
+  position: relative;
 }
+
+/* ===== BRIGHTER SPARKLES ===== */
+main::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+
+  background:
+    radial-gradient(3px 3px at 10% 20%, rgba(255,255,255,1), transparent),
+    radial-gradient(2.5px 2.5px at 30% 65%, rgba(255,255,255,0.9), transparent),
+    radial-gradient(3px 3px at 50% 40%, rgba(255,255,255,1), transparent),
+    radial-gradient(2px 2px at 70% 55%, rgba(255,255,255,0.85), transparent),
+    radial-gradient(3px 3px at 90% 30%, rgba(255,255,255,1), transparent);
+  
+  background-size: 400px 400px;
+  animation: sparkleDrift 10s linear infinite alternate;
+  opacity: 0.85; /* brighter */
+  filter: drop-shadow(0 0 2px rgba(255,255,255,0.8)); /* subtle glow */
+}
+
+/* ===== ANIMATION ===== */
+@keyframes sparkleDrift {
+  0% {
+    background-position: 0 0, 0 0, 0 0, 0 0, 0 0;
+  }
+  100% {
+    background-position: -200px 200px, 150px -150px, 100px 50px, -150px -100px, 200px -200px;
+  }
+}
+
+/* ===== KEEP CONTENT ABOVE SPARKLES ===== */
+main > * {
+  position: relative;
+  z-index: 1;
+}
+
 
 main .container {
   width: 100%;
   padding: 30px 20px;
   overflow: hidden;
 }
+
+
 
 main .container h3 {
   background: linear-gradient(to right, #ffffff, #e3f4ff);
@@ -531,72 +569,197 @@ main .container .image-block1 video {
     font-size: small;
   }
 }
+/* ===== ULTRA PREMIUM ANIMATED CARDS (SINGLE CODE) ===== */
 
 .cards-container {
   display: grid;
   grid-template-columns: auto auto;
-  padding: 50px 20px;
-  background: #ffffff; /* White background */
-  gap: 20px;
+  gap: 22px;
+  padding: 60px 10px;
+
+  background:
+    radial-gradient(circle at top, rgba(0,140,255,0.12), transparent 60%),
+    linear-gradient(to bottom, #ffffff, #f6fbff);
 }
 
+/* === Floating & Border Animation === */
+@keyframes floatCard {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes borderPulse {
+  0% { box-shadow: 0 0 0 rgba(0,140,255,0.2); }
+  100% { box-shadow: 0 0 28px rgba(0,140,255,0.45); }
+}
+
+/* === Card Base === */
 .card {
-  flex: 0 0 45%;
-  background: rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  position: relative;
+  overflow: hidden;
 
-  border: 3px solid rgba(255, 255, 255, 0.25);
-  border-radius: 16px;
+  background: linear-gradient(
+    145deg,
+    rgba(255,255,255,0.45),
+    rgba(255,255,255,0.2)
+  );
 
-  padding: 30px 22px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  border-radius: 20px;
+  border: 2px solid rgba(0,140,255,0.25);
+
+  padding: 34px 28px;
   text-align: left;
 
-  box-shadow: 0 8px 25px rgba(0, 136, 255, 0.15);
-  transition: 0.35s ease;
+  animation:
+    floatCard 6s ease-in-out infinite,
+    borderPulse 4s ease-in-out infinite alternate;
+
+  transition: transform 0.6s ease, box-shadow 0.6s ease, border 0.6s ease;
 }
 
+/* === Shine Layer === */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    120deg,
+    transparent 30%,
+    rgba(255,255,255,0.7),
+    transparent 70%
+  );
+
+  transform: translateX(-120%);
+  animation: shineMove 5s infinite;
+}
+@keyframes shineMove {
+  0% { transform: translateX(-120%); }
+  40% { transform: translateX(120%); }
+  100% { transform: translateX(120%); }
+}
+
+/* === Hover Enhancement === */
 .card:hover {
-  transform: translateY(-8px);
-  border-color: rgba(0, 140, 255, 0.45);
-  box-shadow: 0 14px 35px rgba(0, 140, 255, 0.28);
-  background: rgba(255, 255, 255, 0.25);
+  transform: translateY(-18px) scale(1.05);
+  border: 2px solid #0a8eff;
+  box-shadow:
+    0 35px 70px rgba(0,140,255,0.45),
+    0 0 60px rgba(0,140,255,0.35),
+    0 0 25px rgba(255,255,255,0.2);
 }
 
+/* === Sparkle Overlay === */
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(2px 2px rgba(255,255,255,0.6), transparent) repeat;
+  background-size: 25px 25px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: 1;
+}
+.card:hover::after {
+  opacity: 1;
+  animation: sparkle 1.5s linear infinite;
+}
+
+/* === Title Gradient Animation === */
 .card h2 {
   font-family: "Roboto Slab", serif;
   font-size: 28px;
-  background: linear-gradient(to right, #0a7a55, #075544);
+  margin-bottom: 16px;
+
+  background: linear-gradient(
+    90deg,
+    #0a7a55,
+    #14c38e,
+    #4cc9f0,
+    #075544
+  );
+  background-size: 300% auto;
+
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-bottom: 15px;
+
+  animation: titleFlow 6s linear infinite;
+}
+@keyframes titleFlow {
+  to { background-position: 300% center; }
 }
 
+/* === Paragraph Fade Motion === */
 .card p {
   font-family: "Josefin Slab", serif;
   font-size: 16px;
-  color: #333333; /* readable on white/light background */
-  line-height: 1.6;
-  margin-bottom: 20px;
+  line-height: 1.7;
+  color: #2c2c2c;
+
+  animation: textFade 3.5s ease-in-out infinite alternate;
+}
+@keyframes textFade {
+  from { opacity: 0.85; }
+  to { opacity: 1; }
 }
 
+/* === Button Base === */
 .read-more {
-  padding: 10px 22px;
+  position: relative;
+  overflow: hidden;
+
+  padding: 12px 28px;
   font-size: 16px;
   font-weight: 600;
-  color: #ffffff;
-  background: linear-gradient(to right, #0a7a55, #075544);
+  color: #fff;
+
+  border-radius: 12px;
   border: none;
-  border-radius: 8px;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  background: linear-gradient(135deg, #0a7a55, #14c38e);
+  box-shadow: 0 8px 22px rgba(20,195,142,0.45);
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
+/* Button Ripple */
+.read-more::before {
+  content: "";
+  position: absolute;
+  width: 140%;
+  height: 140%;
+  top: -20%;
+  left: -120%;
+
+  background: radial-gradient(
+    circle,
+    rgba(255,255,255,0.45),
+    transparent 60%
+  );
+
+  transition: transform 0.6s ease;
+}
+.read-more:hover::before {
+  transform: translateX(140%);
+}
+
+/* Button Hover */
 .read-more:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(0, 98, 206, 0.4);
+  transform: translateY(-4px) scale(1.05);
+  box-shadow: 0 14px 40px rgba(20,195,142,0.65);
 }
 
+/* === Sparkle Keyframe === */
+@keyframes sparkle {
+  0% { background-position: 0 0; }
+  100% { background-position: 100px 100px; }
+}
+
+/* === Media Queries === */
 @media screen and (max-width: 990px) {
   .cards-container {
     grid-template-columns: auto;
@@ -609,7 +772,6 @@ main .container .image-block1 video {
     font-size: 14px;
   }
 }
-
 @media screen and (max-width: 500px) {
   .cards-container {
     grid-template-columns: auto;
@@ -623,38 +785,79 @@ main .container .image-block1 video {
   }
 }
 
+
+section {
+  overflow: hidden;
+}
+
 .Table1 {
   width: 100%;
   display: flex;
   gap: 10px;
   padding: 10px 5%;
+  /* overflow: hidden; */
 }
 
+/* Left column */
 .Table1 .c1 {
   width: 60%;
   display: flex;
-  gap: 10px;
-}
-
-.Table1 .c1 img {
-  width: 100%;
+  gap: 20px;
   border-radius: 10px;
-  object-fit: cover;
-  height: 40vh;
 }
 
+/* Right column */
 .Table1 .c2 {
   width: 40%;
   display: flex;
   gap: 10px;
+  border-radius: 10px;
 }
 
-.Table1 .c2 img {
+/* All images */
+.Table1 img {
   width: 100%;
-  border-radius: 10px;
+  height: 40vh;
   object-fit: cover;
+  border-radius: 10px;
+
+  /* Premium base look */
+  filter: brightness(0.95) saturate(0.9) contrast(1.05);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
+
+  transition:
+    filter 0.45s ease,
+    box-shadow 0.45s ease;
+}
+
+/* Big image */
+.Table1 .c2 img {
   height: 81vh;
 }
+
+.Table1 .c1 .s1 {
+  overflow: hidden;
+  border-radius: 10px;
+}
+.Table1 .c1 .s2 {
+  overflow: hidden;
+  border-radius: 10px;
+}
+.Table1 .c2 {
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+/* Premium hover effect */
+.Table1 img:hover {
+  filter: brightness(1.12) saturate(1.45) contrast(1.1);
+
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.35),
+    0 0 28px rgba(0, 140, 255, 0.35);
+    transform: scale(1.01);
+}
+
 
 @media screen and (max-width: 1275px) {
   .Table1 .c1,
@@ -692,83 +895,202 @@ main .container .image-block1 video {
   transform: scale(1.3) rotate(10deg); /* fun hover effect */
   filter: drop-shadow(0 0 10px #00bfa5);
 }
-
+/* ===============================
+   RECRUITMENT SECTION BASE
+================================ */
 .recruitment-contents {
   width: 100%;
-  padding: 15px 20px;
+  padding: 20px;
   background: #ffffff;
 }
 
 .recruitment-contents .container {
   text-align: center;
-  width: 100%;
 }
 
-.recruitment-contents .container h2 {
+.recruitment-contents h2 {
   font-size: xx-large;
-  background: linear-gradient(to right, #0a7a55, #075544);
+  margin-bottom: 18px;
+  font-family: "Lora", serif;
+
+  background: linear-gradient(
+    90deg,
+    #0a7a55,
+    #14c38e,
+    #4cc9f0,
+    #075544
+  );
+  background-size: 300% auto;
+
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-bottom: 15px;
-  font-family: "lora", serif;
+
+  animation: headingFlow 6s linear infinite;
 }
 
-.recruitment-contents .container p {
-  font-family: "josefin slab", serif;
-  color: #333333;
-  line-height: 1.6;
-  font-size: larger;
+@keyframes headingFlow {
+  to {
+    background-position: 300% center;
+  }
 }
 
-/* Service Card */
+/* ===============================
+   SERVICE CARD (SPARKLE CORE)
+================================ */
 .service-card {
-  background: #ffffff;
-  padding: 15px;
-  border-radius: 16px;
   position: relative;
-  border: 2px solid transparent;
-  background-clip: padding-box;
-  transition: 0.3s;
-  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
-  margin-bottom: 5px;
+  overflow: hidden;
+  isolation: isolate;
+
+  margin-bottom: 14px;
+  padding: 22px;
+  border-radius: 20px;
+
+  background: linear-gradient(
+    145deg,
+    rgba(255,255,255,0.95),
+    rgba(245,255,250,0.85)
+  );
+
+  box-shadow:
+    0 15px 40px rgba(0,0,0,0.08);
+
+  transition:
+    transform 0.5s ease,
+    box-shadow 0.5s ease;
 }
 
-/* Gradient Border */
+/* ===============================
+   ANIMATED GRADIENT BORDER
+================================ */
 .service-card::before {
   content: "";
   position: absolute;
   inset: 0;
   padding: 2px;
-  border-radius: 16px;
-  background: linear-gradient(to right, #0a7a55, #075544);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  border-radius: 20px;
+
+  background: linear-gradient(
+    120deg,
+    #0a7a55,
+    #14c38e,
+    #4cc9f0,
+    #075544
+  );
+
+  background-size: 400% 400%;
+  animation: borderFlow 6s linear infinite;
+
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
 }
 
-/* Icons */
-.card-icon {
-  font-size: 42px;
-  background: linear-gradient(to right, #0a7a55, #075544);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 8px;
+@keyframes borderFlow {
+  to {
+    background-position: 400% center;
+  }
 }
 
+/* ===============================
+   REAL SPARKLES INSIDE CARD
+================================ */
+.service-card::after {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  z-index: -1;
+
+  background:
+    radial-gradient(circle, rgba(255,255,255,0.9) 2px, transparent 3px),
+    radial-gradient(circle, rgba(20,195,142,0.9) 1.8px, transparent 3px),
+    radial-gradient(circle, rgba(76,201,240,0.9) 2px, transparent 3px);
+
+  background-size:
+    120px 120px,
+    180px 180px,
+    240px 240px;
+
+  opacity: 0.7;
+  animation: sparkleDrift 12s linear infinite;
+}
+
+@keyframes sparkleDrift {
+  from {
+    transform: translate(0, 0);
+  }
+  to {
+    transform: translate(-140px, -140px);
+  }
+}
+
+/* ===============================
+   CARD HOVER – INTENSITY BOOST
+================================ */
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow:
+    0 35px 80px rgba(0,0,0,0.25),
+    0 0 55px rgba(20,195,142,0.45);
+}
+
+/* ===============================
+   EMOJI FLOAT + GLOW
+================================ */
+.service-card .emoji {
+  font-size: 44px;
+  margin-bottom: 10px;
+  display: inline-block;
+
+  filter: drop-shadow(0 0 10px rgba(20,195,142,0.6));
+  animation: emojiFloat 3s ease-in-out infinite;
+}
+
+@keyframes emojiFloat {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* ===============================
+   TITLE SHIMMER
+================================ */
 .service-card h3 {
-  text-align: center;
   font-size: 20px;
-  color: #075544;
   margin-bottom: 8px;
-}
 
-.service-card h2 {
-  font-size: 26px;
-  background: linear-gradient(to right, #0a7a55, #075544);
+  background: linear-gradient(
+    90deg,
+    #0a7a55,
+    #14c38e,
+    #4cc9f0,
+    #075544
+  );
+  background-size: 300% auto;
+
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  margin-bottom: 12px;
+
+  animation: titleShimmer 5s linear infinite;
 }
+
+@keyframes titleShimmer {
+  to {
+    background-position: 300% center;
+  }
+}
+
+/* ===============================
+   TEXT
+================================ */
+.service-card p {
+  font-family: "Josefin Slab", serif;
+  font-size: larger;
+  color: #2f2f2f;
+  line-height: 1.7;
+}
+
 
 @media screen and (max-width: 1338px) {
   .recruitment {
@@ -925,4 +1247,80 @@ footer {
   .footer-header {
     font-size: larger;
   }
+}
+
+
+
+/* Loader */
+
+.the-main {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.6s ease;
+}
+
+.body1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: "Roboto-slab",serif;
+  background: black;
+  z-index: 1000;
+  width: 100vw;
+  position: fixed;
+  opacity: 1;
+  transition: opacity 0.6s ease;
+}
+
+.loader {
+  position: relative;
+}
+
+.loader .circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 250px;
+  height: 250px;
+  /* border: 2px solid white; */
+}
+
+.loader span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  font-size: 28px;
+  font-weight: 700;
+  color: #0a7a55;
+  text-shadow: 0 0 8px #0a7a55;
+  letter-spacing: 2.5px;
+}
+
+.loader .point {
+  width: 3px;
+  height: 20px;
+  border-radius: 3px;
+  background: #0007;
+  position: absolute;
+  transform: rotate(calc(var(--i) * var(--rot))) translateY(-120px);
+  animation: glow 0.8s linear infinite;
+  animation-delay: calc(var(--i) * 0.01s);
+}
+
+
+@keyframes glow {
+  0%,100%{
+    background: #0007;
+    box-shadow: none;
+  }
+  50% {
+    background: #0a7a55;
+    box-shadow: 0 0 10px #0a7a55;
+  }
+}
+
+.hidden {
+  display: none;
 }
